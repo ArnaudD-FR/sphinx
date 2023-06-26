@@ -37,9 +37,9 @@ def register_sections_as_label(app: Sphinx, document: Node) -> None:
         title = cast(nodes.title, node[0])
         ref_name = getattr(title, 'rawsource', title.astext())
         if app.config.autosectionlabel_prefix_document:
-            name = nodes.fully_normalize_name(docname + ':' + ref_name)
+            name = nodes.fully_normalize_name(docname + ':' + labelid)
         else:
-            name = nodes.fully_normalize_name(ref_name)
+            name = nodes.fully_normalize_name(labelid)
         sectname = clean_astext(title)
 
         logger.debug(__('section "%s" gets labeled as "%s"'),
